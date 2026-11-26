@@ -1,0 +1,170 @@
+{
+  "robot_name": "ericc2_ensit_vision",
+  "units": {
+    "length": "m",
+    "mass": "kg",
+    "moment_of_inertia": "kg*m^2"
+  },
+  "coordinate_system_convention": {
+    "standard": "ROS 2 Standard Z-Up (REP-103)",
+    "reference_frame": "base_cs",
+    "X_axis": "Forward (+X_asm)",
+    "Y_axis": "Left (-Z_asm)",
+    "Z_axis": "Up (+Y_asm)"
+  },
+  "joints": {
+    "J1_cs": {
+      "joint_name": "J1",
+      "kinematic_center": "O1 (base-to-turret)",
+      "reference_axis": "Axis_J1",
+      "parent_cs": "base_cs",
+      "parent_link": "base_link",
+      "child_link": "turret_link",
+      "coordinates_relative_to_base_cs_m": [0.0, 0.0, 0.16],
+      "origin_relative_to_parent_cs_m": [0.0, 0.0, 0.16],
+      "rotation_axis_in_base_cs": [0, 0, 1]
+    },
+    "J2_cs": {
+      "joint_name": "J2",
+      "kinematic_center": "O2 (shoulder)",
+      "reference_axis": "Axis_J2",
+      "parent_cs": "J1_cs",
+      "parent_link": "turret_link",
+      "child_link": "upper_arm_link",
+      "coordinates_relative_to_base_cs_m": [0.0, 0.0, 0.512],
+      "origin_relative_to_parent_cs_m": [0.0, 0.0, 0.352],
+      "rotation_axis_in_base_cs": [0, 1, 0]
+    },
+    "J3_cs": {
+      "joint_name": "J3",
+      "kinematic_center": "O3 (elbow)",
+      "reference_axis": "Axis_J3",
+      "parent_cs": "J2_cs",
+      "parent_link": "upper_arm_link",
+      "child_link": "forearm_link",
+      "coordinates_relative_to_base_cs_m": [0.0, 0.0, 0.792],
+      "origin_relative_to_parent_cs_m": [0.0, 0.0, 0.28],
+      "rotation_axis_in_base_cs": [0, 1, 0]
+    },
+    "J4_cs": {
+      "joint_name": "J4",
+      "kinematic_center": "O4 (wrist pitch)",
+      "reference_axis": "Axis_J4",
+      "parent_cs": "J3_cs",
+      "parent_link": "forearm_link",
+      "child_link": "wrist_pitch_link",
+      "coordinates_relative_to_base_cs_m": [0.3175, 0.0, 0.792],
+      "origin_relative_to_parent_cs_m": [0.3175, 0.0, 0.0],
+      "rotation_axis_in_base_cs": [0, 1, 0]
+    },
+    "J5_cs": {
+      "joint_name": "J5",
+      "kinematic_center": "O5 (camera roll)",
+      "reference_axis": "Axis_J5",
+      "parent_cs": "J4_cs",
+      "parent_link": "wrist_pitch_link",
+      "child_link": "camera_roll_link",
+      "coordinates_relative_to_base_cs_m": [0.3825, 0.0, 0.792],
+      "origin_relative_to_parent_cs_m": [0.065, 0.0, 0.0],
+      "rotation_axis_in_base_cs": [1, 0, 0]
+    }
+  },
+  "components": {
+    "00_base_socle": {
+      "link_name": "base_link",
+      "export_coordinate_system": "base_cs",
+      "mesh": "ericc2_description/meshes/base_link.stl",
+      "mass_kg": 64.32180017,
+      "center_of_mass_m": [0.05005138, 0.0, 0.06087366],
+      "moments_and_products_of_inertia_at_com_kg_m2": [0.51422642, 1.10338429, 1.28415223, 0.0, -0.17185787, 0.0],
+      "inertia_at_com_kg_m2": {
+        "Ixx": 0.51422642,
+        "Iyy": 1.10338429,
+        "Izz": 1.28415223,
+        "Ixy": 0.0,
+        "Ixz": -0.17185787,
+        "Iyz": 0.0
+      }
+    },
+    "01_chaise_turret": {
+      "link_name": "turret_link",
+      "export_coordinate_system": "J1_cs",
+      "mesh": "ericc2_description/meshes/turret_link.stl",
+      "mass_kg": 57.91027685,
+      "center_of_mass_m": [-0.01011716, 0.01437325, 0.17137757],
+      "moments_and_products_of_inertia_at_com_kg_m2": [0.95935260, 0.95088588, 0.28749600, -0.05151411, -0.02384117, 0.04911878],
+      "inertia_at_com_kg_m2": {
+        "Ixx": 0.95935260,
+        "Iyy": 0.95088588,
+        "Izz": 0.28749600,
+        "Ixy": -0.05151411,
+        "Ixz": -0.02384117,
+        "Iyz": 0.04911878
+      }
+    },
+    "02_bras_upper_arm": {
+      "link_name": "upper_arm_link",
+      "export_coordinate_system": "J2_cs",
+      "mesh": "ericc2_description/meshes/upper_arm_link.stl",
+      "mass_kg": 15.54079002,
+      "center_of_mass_m": [0.00046580, -0.10127868, 0.07266108],
+      "moments_and_products_of_inertia_at_com_kg_m2": [0.29538372, 0.30128622, 0.03745048, 0.00002967, -0.00000608, 0.00686310],
+      "inertia_at_com_kg_m2": {
+        "Ixx": 0.29538372,
+        "Iyy": 0.30128622,
+        "Izz": 0.03745048,
+        "Ixy": 0.00002967,
+        "Ixz": -0.00000608,
+        "Iyz": 0.00686310
+      }
+    },
+    "03_avant_bras_forearm": {
+      "link_name": "forearm_link",
+      "export_coordinate_system": "J3_cs",
+      "mesh": "ericc2_description/meshes/forearm_link.stl",
+      "mass_kg": 8.94602373,
+      "center_of_mass_m": [0.12474207, 0.00000286, 0.00049498],
+      "moments_and_products_of_inertia_at_com_kg_m2": [0.01523295, 0.10067397, 0.10141895, 0.00000028, 0.00002087, 0.00000130],
+      "inertia_at_com_kg_m2": {
+        "Ixx": 0.01523295,
+        "Iyy": 0.10067397,
+        "Izz": 0.10141895,
+        "Ixy": 0.00000028,
+        "Ixz": 0.00002087,
+        "Iyz": 0.00000130
+      }
+    },
+    "04_wrist_pitch": {
+      "link_name": "wrist_pitch_link",
+      "export_coordinate_system": "J4_cs",
+      "mesh": "ericc2_description/meshes/wrist_pitch_link.stl",
+      "mass_kg": 0.58991397,
+      "center_of_mass_m": [0.01869741, 0.0, 0.0],
+      "moments_and_products_of_inertia_at_com_kg_m2": [0.00027985, 0.00053632, 0.00048928, 0.0, 0.0, 0.0],
+      "inertia_at_com_kg_m2": {
+        "Ixx": 0.00027985,
+        "Iyy": 0.00053632,
+        "Izz": 0.00048928,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyz": 0.0
+      }
+    },
+    "05_camera_mount_roll": {
+      "link_name": "camera_roll_link",
+      "export_coordinate_system": "J5_cs",
+      "mesh": "ericc2_description/meshes/camera_roll_link.stl",
+      "mass_kg": 0.43942497,
+      "center_of_mass_m": [0.03702536, 0.0, 0.0],
+      "moments_and_products_of_inertia_at_com_kg_m2": [0.00016528, 0.00028050, 0.00032704, 0.0, 0.0, 0.0],
+      "inertia_at_com_kg_m2": {
+        "Ixx": 0.00016528,
+        "Iyy": 0.00028050,
+        "Izz": 0.00032704,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyz": 0.0
+      }
+    }
+  }
+}

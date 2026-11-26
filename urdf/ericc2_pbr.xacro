@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Anodized ENSIT Metallic Blue (Base, Turret, Upper Arm, Forearm) -->
+  <xacro:macro name="ensit_anodized_blue" params="link_name">
+    <gazebo reference="${link_name}">
+      <material>
+        <ambient>0.02 0.16 0.38 1.0</ambient>
+        <diffuse>0.03 0.24 0.55 1.0</diffuse>
+        <specular>0.75 0.80 0.85 1.0</specular>
+        <pbr>
+          <metal>
+            <metalness>0.82</metalness>
+            <roughness>0.26</roughness>
+          </metal>
+        </pbr>
+      </material>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:ensit_anodized_blue link_name="base_link"/>
+  <xacro:ensit_anodized_blue link_name="turret_link"/>
+  <xacro:ensit_anodized_blue link_name="upper_arm_link"/>
+  <xacro:ensit_anodized_blue link_name="forearm_link"/>
+
+  <!-- Brushed Aluminum Wrist Yoke -->
+  <gazebo reference="wrist_pitch_link">
+    <material>
+      <ambient>0.45 0.47 0.50 1.0</ambient>
+      <diffuse>0.68 0.70 0.73 1.0</diffuse>
+      <specular>0.90 0.90 0.92 1.0</specular>
+      <pbr>
+        <metal>
+          <metalness>0.90</metalness>
+          <roughness>0.22</roughness>
+        </metal>
+      </pbr>
+    </material>
+  </gazebo>
+
+  <!-- Matte Black Camera Housing -->
+  <gazebo reference="camera_roll_link">
+    <material>
+      <ambient>0.06 0.06 0.07 1.0</ambient>
+      <diffuse>0.10 0.10 0.12 1.0</diffuse>
+      <specular>0.35 0.35 0.38 1.0</specular>
+      <pbr>
+        <metal>
+          <metalness>0.30</metalness>
+          <roughness>0.48</roughness>
+        </metal>
+      </pbr>
+    </material>
+  </gazebo>
+
+</robot>

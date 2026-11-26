@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ericc2_ensit_vision">
+
+  <material name="ensit_blue">
+    <color rgba="0.02 0.24 0.50 1.0"/>
+  </material>
+  <material name="matte_black">
+    <color rgba="0.12 0.12 0.12 1.0"/>
+  </material>
+  <material name="metallic_gray">
+    <color rgba="0.65 0.65 0.68 1.0"/>
+  </material>
+
+  <link name="world"/>
+
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/base_link.STL"/>
+      </geometry>
+      <material name="ensit_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.05005138 0.0 0.06087366" rpy="0 0 0"/>
+      <mass value="64.32180017"/>
+      <inertia ixx="0.51422642" ixy="0.0" ixz="-0.17185787"
+               iyy="1.10338429" iyz="0.0" izz="1.28415223"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="turret_link"/>
+    <origin xyz="0.0 0.0 0.16" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.3562" upper="2.3562" effort="200.0" velocity="1.5"/>
+    <dynamics damping="2.0" friction="0.5"/>
+  </joint>
+
+  <link name="turret_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/turret_link.STL"/>
+      </geometry>
+      <material name="ensit_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/turret_link.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.01011716 0.01437325 0.17137757" rpy="0 0 0"/>
+      <mass value="57.91027685"/>
+      <inertia ixx="0.95935260" ixy="-0.05151411" ixz="-0.02384117"
+               iyy="0.95088588" iyz="0.04911878" izz="0.28749600"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_2" type="revolute">
+    <parent link="turret_link"/>
+    <child link="upper_arm_link"/>
+    <origin xyz="0.0 0.0 0.352" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="0.7505" effort="200.0" velocity="1.5"/>
+    <dynamics damping="2.0" friction="0.5"/>
+  </joint>
+
+  <link name="upper_arm_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/upper_arm_link.STL"/>
+      </geometry>
+      <material name="ensit_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/upper_arm_link.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.00046580 -0.10127868 0.07266108" rpy="0 0 0"/>
+      <mass value="15.54079002"/>
+      <inertia ixx="0.29538372" ixy="0.00002967" ixz="-0.00000608"
+               iyy="0.30128622" iyz="0.00686310" izz="0.03745048"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_3" type="revolute">
+    <parent link="upper_arm_link"/>
+    <child link="forearm_link"/>
+    <origin xyz="0.0 0.0 0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="0.7854" effort="150.0" velocity="1.5"/>
+    <dynamics damping="1.5" friction="0.3"/>
+  </joint>
+
+  <link name="forearm_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/forearm_link.STL"/>
+      </geometry>
+      <material name="ensit_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/forearm_link.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.12474207 0.00000286 0.00049498" rpy="0 0 0"/>
+      <mass value="8.94602373"/>
+      <inertia ixx="0.01523295" ixy="0.00000028" ixz="0.00002087"
+               iyy="0.10067397" iyz="0.00000130" izz="0.10141895"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_4" type="revolute">
+    <parent link="forearm_link"/>
+    <child link="wrist_pitch_link"/>
+    <origin xyz="0.3175 0.0 0.0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="50.0" velocity="2.0"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <link name="wrist_pitch_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/wrist_pitch_link.STL"/>
+      </geometry>
+      <material name="metallic_gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/wrist_pitch_link.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.01869741 0.0 0.0" rpy="0 0 0"/>
+      <mass value="0.58991397"/>
+      <inertia ixx="0.00027985" ixy="0.0" ixz="0.0"
+               iyy="0.00053632" iyz="0.0" izz="0.00048928"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_5" type="revolute">
+    <parent link="wrist_pitch_link"/>
+    <child link="camera_roll_link"/>
+    <origin xyz="0.065 0.0 0.0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-3.1416" upper="3.1416" effort="20.0" velocity="3.0"/>
+    <dynamics damping="0.2" friction="0.05"/>
+  </joint>
+
+  <link name="camera_roll_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/camera_roll_link.STL"/>
+      </geometry>
+      <material name="matte_black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ericc2_description/meshes/camera_roll_link.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.03702536 0.0 0.0" rpy="0 0 0"/>
+      <mass value="0.43942497"/>
+      <inertia ixx="0.00016528" ixy="0.0" ixz="0.0"
+               iyy="0.00028050" iyz="0.0" izz="0.00032704"/>
+    </inertial>
+  </link>
+
+  <link name="camera_link"/>
+  <joint name="camera_lens_joint" type="fixed">
+    <parent link="camera_roll_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.090 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="camera_optical_frame"/>
+  <joint name="camera_optical_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="camera_optical_frame"/>
+    <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+  </joint>
+
+  <xacro:include filename="$(find ericc2_description)/urdf/ericc2_gazebo.xacro"/>
+  <xacro:include filename="$(find ericc2_description)/urdf/ericc2_pbr.xacro"/>
+</robot>
