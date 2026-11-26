@@ -44,6 +44,18 @@ This repository contains the native **SOLIDWORKS** part models, articulated 5-DO
 | :---: | :---: |
 | ![ERICC 2 Side Profile](images/ericc2_side_profile.png) | ![Camera Wrist Close-Up](images/camera_wrist_closeup.png) |
 
+### Gazebo Harmonic Digital Twin & Live RGB Vision
+
+| Gazebo Harmonic PBR Studio Simulation | 5th-Axis RGB Camera Stream (`/camera/image_raw`) |
+| :---: | :---: |
+| ![Gazebo Digital Twin](images/gazebo_digital_twin.png) | ![Gazebo RGB Camera Feed](images/gazebo_camera_feed.png) |
+
+### Gazebo Harmonic Digital Twin & Onboard RGB Vision
+
+| Initial Home Pose | Multi-Axis Workspace Pose | 5th-Axis Camera Target View (Green Cube) |
+| :---: | :---: | :---: |
+| ![Gazebo Initial Pose](images/gazebo_initial.png) | ![Gazebo Showcase Pose](images/gazebo_showcase.png) | ![Gazebo Green Cube Vision](images/gazebo_green_cube_vision.png) |
+
 ### ISO A3 Technical Drawing (*Dessin d'ensemble*)
 
 Includes the front elevation, connected vertical section view (`COUPE A-A`) with alternating hatching, shaded isometric reference, official ERICC 2 kinematic dimensions, aligned underlined repères (`1`–`6`), and full French *Nomenclature* (BOM).
