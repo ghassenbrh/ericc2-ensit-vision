@@ -44,12 +44,6 @@ This repository contains the native **SOLIDWORKS** part models, articulated 5-DO
 | :---: | :---: |
 | ![ERICC 2 Side Profile](images/ericc2_side_profile.png) | ![Camera Wrist Close-Up](images/camera_wrist_closeup.png) |
 
-### Gazebo Harmonic Digital Twin & Live RGB Vision
-
-| Gazebo Harmonic PBR Studio Simulation | 5th-Axis RGB Camera Stream (`/camera/image_raw`) |
-| :---: | :---: |
-| ![Gazebo Digital Twin](images/gazebo_digital_twin.png) | ![Gazebo RGB Camera Feed](images/gazebo_camera_feed.png) |
-
 ### Gazebo Harmonic Digital Twin & Onboard RGB Vision
 
 | Initial Home Pose | Multi-Axis Workspace Pose | 5th-Axis Camera Target View (Green Cube) |
